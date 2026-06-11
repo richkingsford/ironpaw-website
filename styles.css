@@ -294,6 +294,17 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.fleet-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.fleet-card::before,
+.fleet-card::after {
+  z-index: 0;
+  pointer-events: none;
+}
+
 .fleet-card::after {
   position: absolute;
   inset: auto 18px 18px auto;
@@ -315,18 +326,18 @@ h3 {
 .fleet-card.leia::before,
 .fleet-card.cub::before {
   position: absolute;
-  right: -28px;
-  bottom: 64px;
-  width: 190px;
-  height: 122px;
+  right: -36px;
+  bottom: 26px;
+  width: 160px;
+  height: 86px;
   border: 4px solid var(--ink);
   content: "";
-  opacity: 0.17;
+  opacity: 0.11;
 }
 
 .fleet-card.cub::before {
-  width: 148px;
-  height: 168px;
+  width: 132px;
+  height: 118px;
   background:
     linear-gradient(90deg, transparent 31%, var(--ink) 32%, var(--ink) 35%, transparent 36%),
     linear-gradient(90deg, transparent 64%, var(--ink) 65%, var(--ink) 68%, transparent 69%),
