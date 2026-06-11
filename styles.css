@@ -423,7 +423,7 @@ h3 {
 
 .proof-image img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   filter: grayscale(1) contrast(1.08);
 }
@@ -553,7 +553,8 @@ h3 {
   }
 
   h1 {
-    font-size: clamp(3.1rem, 15.2vw, 5.7rem);
+    font-size: clamp(2.8rem, 11.8vw, 4.6rem);
+    line-height: 0.92;
   }
 
   .signal-strip {
