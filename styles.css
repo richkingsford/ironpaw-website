@@ -280,13 +280,13 @@ h3 {
 
 .fleet-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .fleet-card {
   position: relative;
-  min-height: 430px;
+  min-height: 590px;
   padding: 22px;
   overflow: hidden;
   border: 2px solid var(--ink);
@@ -373,7 +373,7 @@ h3 {
 }
 
 .visual-card {
-  padding-top: 250px;
+  padding-top: 358px;
   background: var(--paper-clean);
 }
 
@@ -382,10 +382,18 @@ h3 {
   top: 0;
   left: 0;
   width: 100%;
-  height: 230px;
+  height: 334px;
   object-fit: cover;
   border-bottom: 2px solid var(--ink);
   filter: grayscale(1) contrast(1.06);
+}
+
+.visual-card.leia img {
+  object-position: 50% 52%;
+}
+
+.visual-card.cub img {
+  object-position: 50% 52%;
 }
 
 .visual-card.grizzly img {
@@ -393,7 +401,9 @@ h3 {
 }
 
 .visual-card.polar img {
-  object-position: 23% 26%;
+  object-fit: cover;
+  object-position: center;
+  background: var(--paper-clean);
 }
 
 .proof {
@@ -496,7 +506,6 @@ h3 {
 }
 
 @media (max-width: 980px) {
-  .fleet-grid,
   .thesis-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -567,7 +576,15 @@ h3 {
   }
 
   .fleet-card {
-    min-height: 360px;
+    min-height: 500px;
+  }
+
+  .visual-card {
+    padding-top: 286px;
+  }
+
+  .visual-card img {
+    height: 262px;
   }
 
   .site-footer {
