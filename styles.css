@@ -463,7 +463,9 @@ h3 {
 }
 
 .mission-action {
-  margin-top: clamp(38px, 5vw, 58px);
+  display: flex;
+  margin-top: clamp(72px, 8vw, 104px);
+  padding-bottom: clamp(16px, 3vw, 32px);
 }
 
 .site-footer {
