@@ -253,21 +253,12 @@ h3 {
   padding: clamp(64px, 10vw, 120px) 0;
 }
 
-.intro {
-  max-width: 1020px;
-}
-
-.intro p,
 .section-heading p,
 .proof-copy p,
 .thesis p,
 .closing p {
   color: var(--ink-soft);
   font-size: clamp(1rem, 1.35vw, 1.18rem);
-}
-
-.intro p {
-  max-width: 760px;
 }
 
 .section-heading {
