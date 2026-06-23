@@ -255,8 +255,7 @@ h3 {
 
 .section-heading p,
 .proof-copy p,
-.thesis p,
-.closing p {
+.thesis p {
   color: var(--ink-soft);
   font-size: clamp(1rem, 1.35vw, 1.18rem);
 }
@@ -463,24 +462,8 @@ h3 {
   background: var(--paper-clean);
 }
 
-.closing {
-  width: min(100%, 1500px);
-  margin: 0 auto;
-  padding: clamp(72px, 11vw, 140px) clamp(18px, 6vw, 92px);
-  border-top: 2px solid var(--ink);
-  background:
-    linear-gradient(120deg, rgba(196, 55, 37, 0.16), transparent 42%),
-    var(--ink);
-  color: var(--paper-clean);
-}
-
-.closing p {
-  max-width: 780px;
-  color: rgba(255, 250, 240, 0.82);
-}
-
-.closing .button {
-  margin-top: 18px;
+.mission-action {
+  margin-top: clamp(38px, 5vw, 58px);
 }
 
 .site-footer {
