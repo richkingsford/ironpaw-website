@@ -185,10 +185,13 @@
           </article>
         </div>
         <div class="mission-action" aria-label="Inquiry form">
-          <form class="inquiry-form" id="inquiry-form">
+          <form class="inquiry-form" id="inquiry-form" name="ironpaw-inquiry" method="POST" action="https://formsubmit.co/7d2b8c45bf43252b0e0dac22dca9ff85">
+            <input type="hidden" name="_subject" value="New IronPaw demo inquiry">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_url" value="https://ironpaw.ai/">
+            <input type="text" name="_honey" class="bot-field" tabindex="-1" autocomplete="off">
             <div class="form-heading">
               <h3>Ask for a field demo</h3>
-              <p>Short form. No brochure maze. Tell us which machine should move first.</p>
             </div>
             <label>
               <span>Company</span>
@@ -201,7 +204,6 @@
             <label>
               <span>Interest</span>
               <select name="interest" required>
-                <option value="">Pick a bot</option>
                 <option>Leia: brick placement</option>
                 <option>Cub: ground-frame assembly</option>
                 <option>Grizzly: autonomous telehandling</option>
@@ -223,27 +225,5 @@
       <span>IronPaw</span>
       <span>Autonomous construction robotics</span>
     </footer>
-    <script>
-      document.getElementById("inquiry-form").addEventListener("submit", (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        const company = data.get("company").trim();
-        const email = data.get("email").trim();
-        const interest = data.get("interest").trim();
-        const note = data.get("note").trim();
-        const subject = `IronPaw demo inquiry: ${interest || "field evidence"}`;
-        const body = [
-          `Company: ${company}`,
-          `Email: ${email}`,
-          `Interest: ${interest}`,
-          "",
-          "What should we prove?",
-          note || "(Open to your best field demo.)"
-        ].join("\n");
-
-        window.location.href =
-          `mailto:hello@ironpaw.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      });
-    </script>
   </body>
 </html>
