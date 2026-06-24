@@ -83,10 +83,26 @@
 
         <div class="fleet-grid">
           <article class="fleet-card visual-card leia">
-            <img
-              src="assets/leia-brick-forklift.webp"
-              alt="Black and white concept sketch of Leia, a small autonomous brick robot with a tall mast lifting one brick."
-            >
+            <div class="bot-carousel" data-carousel>
+              <div class="carousel-stage">
+                <figure class="carousel-slide is-active">
+                  <img
+                    src="assets/leia-brick-forklift.webp"
+                    alt="Black and white concept sketch of Leia, a small autonomous brick robot with a tall mast lifting one brick."
+                  >
+                </figure>
+                <figure class="carousel-slide video-slide">
+                  <div class="youtube-placeholder" aria-label="Leia YouTube video placeholder">
+                    <span class="play-mark" aria-hidden="true"></span>
+                    <strong>Leia field video</strong>
+                  </div>
+                </figure>
+              </div>
+              <div class="carousel-controls" aria-label="Leia media controls">
+                <button type="button" data-carousel-prev aria-label="Previous Leia media">&#8592;</button>
+                <button type="button" data-carousel-next aria-label="Next Leia media">&#8594;</button>
+              </div>
+            </div>
             <div class="machine-label">01</div>
             <h3>Leia</h3>
             <p class="role">Compact brick lift robot</p>
@@ -97,10 +113,26 @@
           </article>
 
           <article class="fleet-card visual-card cub">
-            <img
-              src="assets/cub-stud-framer.webp"
-              alt="Black and white concept sketch of Cub, a small autonomous robot assembling a stud wall frame flat on the ground."
-            >
+            <div class="bot-carousel" data-carousel>
+              <div class="carousel-stage">
+                <figure class="carousel-slide is-active">
+                  <img
+                    src="assets/cub-stud-framer.webp"
+                    alt="Black and white concept sketch of Cub, a small autonomous robot assembling a stud wall frame flat on the ground."
+                  >
+                </figure>
+                <figure class="carousel-slide video-slide">
+                  <div class="youtube-placeholder" aria-label="Cub YouTube video placeholder">
+                    <span class="play-mark" aria-hidden="true"></span>
+                    <strong>Cub assembly video</strong>
+                  </div>
+                </figure>
+              </div>
+              <div class="carousel-controls" aria-label="Cub media controls">
+                <button type="button" data-carousel-prev aria-label="Previous Cub media">&#8592;</button>
+                <button type="button" data-carousel-next aria-label="Next Cub media">&#8594;</button>
+              </div>
+            </div>
             <div class="machine-label">02</div>
             <h3>Cub</h3>
             <p class="role">Ground-frame assembly robot</p>
@@ -111,10 +143,26 @@
           </article>
 
           <article class="fleet-card visual-card grizzly">
-            <img
-              src="assets/grizzly-telehandler.webp"
-              alt="Black and white concept sketch of Grizzly, an autonomous telehandler."
-            >
+            <div class="bot-carousel" data-carousel>
+              <div class="carousel-stage">
+                <figure class="carousel-slide is-active">
+                  <img
+                    src="assets/grizzly-telehandler.webp"
+                    alt="Black and white concept sketch of Grizzly, an autonomous telehandler."
+                  >
+                </figure>
+                <figure class="carousel-slide video-slide">
+                  <div class="youtube-placeholder" aria-label="Grizzly YouTube video placeholder">
+                    <span class="play-mark" aria-hidden="true"></span>
+                    <strong>Grizzly material run</strong>
+                  </div>
+                </figure>
+              </div>
+              <div class="carousel-controls" aria-label="Grizzly media controls">
+                <button type="button" data-carousel-prev aria-label="Previous Grizzly media">&#8592;</button>
+                <button type="button" data-carousel-next aria-label="Next Grizzly media">&#8594;</button>
+              </div>
+            </div>
             <div class="machine-label">03</div>
             <h3>Grizzly</h3>
             <p class="role">Autonomous telehandler</p>
@@ -125,10 +173,26 @@
           </article>
 
           <article class="fleet-card visual-card polar">
-            <img
-              src="assets/polar-crane-wide.webp"
-              alt="Wide black and white concept sketch of Polar, an autonomous crane lifting near a steel beam while a worker points."
-            >
+            <div class="bot-carousel" data-carousel>
+              <div class="carousel-stage">
+                <figure class="carousel-slide is-active">
+                  <img
+                    src="assets/polar-crane-wide.webp"
+                    alt="Wide black and white concept sketch of Polar, an autonomous crane lifting near a steel beam while a worker points."
+                  >
+                </figure>
+                <figure class="carousel-slide video-slide">
+                  <div class="youtube-placeholder" aria-label="Polar YouTube video placeholder">
+                    <span class="play-mark" aria-hidden="true"></span>
+                    <strong>Polar lift video</strong>
+                  </div>
+                </figure>
+              </div>
+              <div class="carousel-controls" aria-label="Polar media controls">
+                <button type="button" data-carousel-prev aria-label="Previous Polar media">&#8592;</button>
+                <button type="button" data-carousel-next aria-label="Next Polar media">&#8594;</button>
+              </div>
+            </div>
             <div class="machine-label">04</div>
             <h3>Polar</h3>
             <p class="role">Autonomous crane</p>
@@ -243,6 +307,41 @@
 
       setHeaderState();
       window.addEventListener("scroll", setHeaderState, { passive: true });
+
+      document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+        const slides = Array.from(carousel.querySelectorAll(".carousel-slide"));
+        const previousButton = carousel.querySelector("[data-carousel-prev]");
+        const nextButton = carousel.querySelector("[data-carousel-next]");
+        let activeIndex = slides.findIndex((slide) => slide.classList.contains("is-active"));
+        let intervalId;
+
+        if (activeIndex < 0) activeIndex = 0;
+
+        const showSlide = (index) => {
+          activeIndex = (index + slides.length) % slides.length;
+          slides.forEach((slide, slideIndex) => {
+            slide.classList.toggle("is-active", slideIndex === activeIndex);
+          });
+        };
+
+        const restartRotation = () => {
+          clearInterval(intervalId);
+          intervalId = window.setInterval(() => showSlide(activeIndex + 1), 3000);
+        };
+
+        previousButton.addEventListener("click", () => {
+          showSlide(activeIndex - 1);
+          restartRotation();
+        });
+
+        nextButton.addEventListener("click", () => {
+          showSlide(activeIndex + 1);
+          restartRotation();
+        });
+
+        showSlide(activeIndex);
+        restartRotation();
+      });
 
       const inquiryForm = document.getElementById("inquiry-form");
       const submitButton = inquiryForm.querySelector("button[type='submit']");

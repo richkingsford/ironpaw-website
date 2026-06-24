@@ -93,11 +93,10 @@ a {
 
 .brand-mark {
   display: inline-grid;
-  grid-template-columns: 12px 18px;
+  grid-template-columns: 10px 18px;
   align-items: center;
   justify-content: center;
-  gap: 1px;
-  width: 46px;
+  width: 40px;
   height: 34px;
   border: 2px solid currentColor;
   font-weight: 900;
@@ -109,8 +108,9 @@ a {
 }
 
 .brand-paw {
-  width: 20px;
-  height: 20px;
+  width: 19px;
+  height: 19px;
+  margin-left: -2px;
   fill: currentColor;
 }
 
@@ -395,37 +395,125 @@ h3 {
 }
 
 .visual-card {
-  padding-top: 358px;
   background: var(--paper-clean);
 }
 
-.visual-card img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 334px;
-  object-fit: cover;
+.bot-carousel {
+  margin: -22px -22px 22px;
   border-bottom: 2px solid var(--ink);
+  background: var(--paper-clean);
+}
+
+.carousel-stage {
+  position: relative;
+  height: 334px;
+  overflow: hidden;
+  background: #151512;
+}
+
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(16px);
+  transition:
+    opacity 300ms ease,
+    transform 340ms ease;
+}
+
+.carousel-slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   filter: grayscale(1) contrast(1.06);
 }
 
-.visual-card.leia img {
+.visual-card.leia .carousel-slide img {
   object-position: 50% 52%;
 }
 
-.visual-card.cub img {
+.visual-card.cub .carousel-slide img {
   object-position: 50% 52%;
 }
 
-.visual-card.grizzly img {
+.visual-card.grizzly .carousel-slide img {
   object-position: 57% 54%;
 }
 
-.visual-card.polar img {
+.visual-card.polar .carousel-slide img {
   object-fit: cover;
   object-position: center;
   background: var(--paper-clean);
+}
+
+.youtube-placeholder {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 14px;
+  height: 100%;
+  padding: 24px;
+  color: var(--paper-clean);
+  text-align: center;
+  background:
+    linear-gradient(rgba(255, 250, 240, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 250, 240, 0.05) 1px, transparent 1px),
+    linear-gradient(145deg, rgba(196, 55, 37, 0.34), rgba(20, 20, 20, 0.2) 52%),
+    #151512;
+  background-size: 30px 30px, 30px 30px, auto, auto;
+}
+
+.youtube-placeholder strong {
+  font-size: clamp(1.3rem, 2vw, 1.9rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.play-mark {
+  width: 68px;
+  height: 48px;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  background: var(--paper-clean);
+  filter: drop-shadow(6px 6px 0 rgba(196, 55, 37, 0.72));
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--paper-clean);
+}
+
+.carousel-controls button {
+  display: grid;
+  width: 40px;
+  height: 34px;
+  place-items: center;
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.carousel-controls button:hover,
+.carousel-controls button:focus-visible {
+  background: var(--ink);
+  color: var(--paper-clean);
 }
 
 .proof {
@@ -756,11 +844,7 @@ h3 {
     min-height: 500px;
   }
 
-  .visual-card {
-    padding-top: 286px;
-  }
-
-  .visual-card img {
+  .carousel-stage {
     height: 262px;
   }
 
