@@ -8,12 +8,20 @@
       name="description"
       content="IronPaw builds autonomous construction robots for bricks, stud framing, telehandling, and crane operations."
     >
-    <link rel="stylesheet" href="styles.css?v=20260623-cta-space">
+    <link rel="stylesheet" href="styles.css?v=20260623-header-paw">
   </head>
   <body>
     <header class="site-header" aria-label="Primary">
       <a class="brand" href="#top" aria-label="IronPaw home">
-        <span class="brand-mark" aria-hidden="true">IP</span>
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-letter">I</span>
+          <svg class="brand-paw" viewBox="0 0 28 28" focusable="false">
+            <circle cx="9" cy="8" r="3.2"></circle>
+            <circle cx="15" cy="6.3" r="3.1"></circle>
+            <circle cx="21" cy="8.7" r="2.9"></circle>
+            <path d="M7.2 20.6c0-4.5 3.2-8 7.6-8 4.1 0 7 3.2 7 7.4 0 2.6-1.6 4.3-3.8 4.3-1.4 0-2.2-.7-3.3-.7-1.2 0-2.2.7-3.8.7-2.2 0-3.7-1.4-3.7-3.7Z"></path>
+          </svg>
+        </span>
         <span>IronPaw</span>
       </a>
       <nav class="nav-links" aria-label="Sections">
@@ -228,6 +236,14 @@
       <span>Autonomous construction robotics</span>
     </footer>
     <script>
+      const siteHeader = document.querySelector(".site-header");
+      const setHeaderState = () => {
+        siteHeader.classList.toggle("is-scrolled", window.scrollY > 18);
+      };
+
+      setHeaderState();
+      window.addEventListener("scroll", setHeaderState, { passive: true });
+
       const inquiryForm = document.getElementById("inquiry-form");
       const submitButton = inquiryForm.querySelector("button[type='submit']");
       const statusMessage = inquiryForm.querySelector(".form-status");
