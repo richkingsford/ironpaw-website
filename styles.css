@@ -478,6 +478,11 @@ h3 {
     linear-gradient(145deg, rgba(196, 55, 37, 0.08), transparent 52%),
     var(--paper-clean);
   box-shadow: var(--shadow);
+  overflow: hidden;
+  transition:
+    padding 260ms ease,
+    box-shadow 260ms ease,
+    transform 260ms ease;
 }
 
 .form-heading {
@@ -495,6 +500,17 @@ h3 {
   display: grid;
   gap: 7px;
   min-width: 0;
+}
+
+.form-heading,
+.inquiry-form label,
+.inquiry-form .button {
+  max-height: 150px;
+  transition:
+    opacity 220ms ease,
+    transform 260ms ease,
+    max-height 300ms ease,
+    margin 260ms ease;
 }
 
 .inquiry-form span {
@@ -537,6 +553,65 @@ h3 {
 
 .inquiry-form .button {
   min-width: 170px;
+}
+
+.inquiry-form .button:disabled {
+  cursor: wait;
+  filter: saturate(0.82);
+}
+
+.form-status {
+  grid-column: 1 / -1;
+  max-height: 0;
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
+  color: var(--ink);
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-weight: 900;
+  outline: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 260ms ease 120ms,
+    transform 300ms ease 120ms,
+    max-height 320ms ease,
+    margin 260ms ease;
+}
+
+.inquiry-form.has-error .form-status {
+  max-height: 80px;
+  margin-top: 4px;
+  opacity: 1;
+  color: var(--signal-dark);
+  transform: translateY(0);
+}
+
+.inquiry-form.is-submitting {
+  transform: translateY(-1px);
+}
+
+.inquiry-form.is-submitted {
+  grid-template-columns: 1fr;
+  align-items: center;
+  padding: clamp(22px, 4vw, 34px);
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+.inquiry-form.is-submitted .form-heading,
+.inquiry-form.is-submitted label,
+.inquiry-form.is-submitted .button {
+  max-height: 0;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-12px) scale(0.98);
+}
+
+.inquiry-form.is-submitted .form-status {
+  max-height: 90px;
+  margin: 0;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .bot-field {

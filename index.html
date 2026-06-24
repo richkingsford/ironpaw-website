@@ -189,6 +189,7 @@
             <input type="hidden" name="_subject" value="New IronPaw demo inquiry">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_url" value="https://ironpaw.ai/">
+            <input type="hidden" name="_captcha" value="false">
             <input type="text" name="_honey" class="bot-field" tabindex="-1" autocomplete="off">
             <div class="form-heading">
               <h3>Ask for a field demo</h3>
@@ -216,6 +217,7 @@
               <textarea name="note" rows="3" placeholder="Cycle time, labor reduction, site workflow, retrofit path..."></textarea>
             </label>
             <button class="button primary" type="submit">Request a demo</button>
+            <p class="form-status" role="status" aria-live="polite" tabindex="-1">Thanks! We'll be in touch.</p>
           </form>
         </div>
       </section>
@@ -225,5 +227,43 @@
       <span>IronPaw</span>
       <span>Autonomous construction robotics</span>
     </footer>
+    <script>
+      const inquiryForm = document.getElementById("inquiry-form");
+      const submitButton = inquiryForm.querySelector("button[type='submit']");
+      const statusMessage = inquiryForm.querySelector(".form-status");
+
+      inquiryForm.addEventListener("submit", async (event) => {
+        if (!inquiryForm.checkValidity()) return;
+
+        event.preventDefault();
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+        statusMessage.textContent = "Thanks! We'll be in touch.";
+        inquiryForm.classList.remove("has-error");
+        inquiryForm.classList.add("is-submitting");
+
+        try {
+          const endpoint = inquiryForm.action.replace("formsubmit.co/", "formsubmit.co/ajax/");
+          const response = await fetch(endpoint, {
+            method: "POST",
+            body: new FormData(inquiryForm),
+            headers: { Accept: "application/json" }
+          });
+
+          if (!response.ok) throw new Error("Form submission failed");
+
+          inquiryForm.reset();
+          inquiryForm.classList.remove("is-submitting");
+          inquiryForm.classList.add("is-submitted");
+          statusMessage.focus({ preventScroll: true });
+        } catch (error) {
+          inquiryForm.classList.remove("is-submitting");
+          submitButton.disabled = false;
+          submitButton.textContent = "Request a demo";
+          statusMessage.textContent = "That did not send. Try again, or email us directly.";
+          inquiryForm.classList.add("has-error");
+        }
+      });
+    </script>
   </body>
 </html>
