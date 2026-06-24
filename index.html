@@ -184,10 +184,37 @@
             </p>
           </article>
         </div>
-        <div class="mission-action">
-          <a class="button primary" href="mailto:hello@ironpaw.ai?subject=IronPaw%20field%20evidence%20conversation">
-            Start the conversation
-          </a>
+        <div class="mission-action" aria-label="Inquiry form">
+          <form class="inquiry-form" id="inquiry-form">
+            <div class="form-heading">
+              <h3>Ask for a field demo</h3>
+              <p>Short form. No brochure maze. Tell us which machine should move first.</p>
+            </div>
+            <label>
+              <span>Company</span>
+              <input name="company" autocomplete="organization" placeholder="Your equipment or construction team" required>
+            </label>
+            <label>
+              <span>Email</span>
+              <input name="email" type="email" autocomplete="email" placeholder="name@company.com" required>
+            </label>
+            <label>
+              <span>Interest</span>
+              <select name="interest" required>
+                <option value="">Pick a bot</option>
+                <option>Leia: brick placement</option>
+                <option>Cub: ground-frame assembly</option>
+                <option>Grizzly: autonomous telehandling</option>
+                <option>Polar: autonomous lift</option>
+                <option>The whole IronPaw stack</option>
+              </select>
+            </label>
+            <label class="wide-field">
+              <span>What should we prove?</span>
+              <textarea name="note" rows="3" placeholder="Cycle time, labor reduction, site workflow, retrofit path..."></textarea>
+            </label>
+            <button class="button primary" type="submit">Request a demo</button>
+          </form>
         </div>
       </section>
     </main>
@@ -196,5 +223,27 @@
       <span>IronPaw</span>
       <span>Autonomous construction robotics</span>
     </footer>
+    <script>
+      document.getElementById("inquiry-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        const company = data.get("company").trim();
+        const email = data.get("email").trim();
+        const interest = data.get("interest").trim();
+        const note = data.get("note").trim();
+        const subject = `IronPaw demo inquiry: ${interest || "field evidence"}`;
+        const body = [
+          `Company: ${company}`,
+          `Email: ${email}`,
+          `Interest: ${interest}`,
+          "",
+          "What should we prove?",
+          note || "(Open to your best field demo.)"
+        ].join("\n");
+
+        window.location.href =
+          `mailto:hello@ironpaw.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
+    </script>
   </body>
 </html>
