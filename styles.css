@@ -120,6 +120,22 @@ a {
   text-transform: uppercase;
 }
 
+.nav-demo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 2px solid var(--signal);
+  background: var(--signal);
+  color: #fff;
+  font-size: 0.78rem;
+}
+
+.nav-demo:hover {
+  background: var(--signal-dark);
+  border-color: var(--signal-dark);
+}
+
 .hero {
   position: relative;
   min-height: 86svh;
