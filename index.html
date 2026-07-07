@@ -92,10 +92,13 @@
                   >
                 </figure>
                 <figure class="carousel-slide video-slide">
-                  <div class="youtube-placeholder" aria-label="Leia YouTube video placeholder">
-                    <span class="play-mark" aria-hidden="true"></span>
-                    <strong>Leia field video</strong>
-                  </div>
+                  <iframe
+                    src="https://www.youtube-nocookie.com/embed/dBJOP-7S-vA?start=15&rel=0"
+                    title="Leia field video"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                  ></iframe>
                 </figure>
               </div>
               <div class="carousel-controls" aria-label="Leia media controls">
@@ -122,10 +125,13 @@
                   >
                 </figure>
                 <figure class="carousel-slide video-slide">
-                  <div class="youtube-placeholder" aria-label="Cub YouTube video placeholder">
-                    <span class="play-mark" aria-hidden="true"></span>
-                    <strong>Cub assembly video</strong>
-                  </div>
+                  <iframe
+                    src="https://www.youtube-nocookie.com/embed/dBJOP-7S-vA?start=72&rel=0"
+                    title="Cub assembly video"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                  ></iframe>
                 </figure>
               </div>
               <div class="carousel-controls" aria-label="Cub media controls">
@@ -152,10 +158,13 @@
                   >
                 </figure>
                 <figure class="carousel-slide video-slide">
-                  <div class="youtube-placeholder" aria-label="Grizzly YouTube video placeholder">
-                    <span class="play-mark" aria-hidden="true"></span>
-                    <strong>Grizzly material run</strong>
-                  </div>
+                  <iframe
+                    src="https://www.youtube-nocookie.com/embed/dBJOP-7S-vA?start=113&rel=0"
+                    title="Grizzly material run"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                  ></iframe>
                 </figure>
               </div>
               <div class="carousel-controls" aria-label="Grizzly media controls">
@@ -182,10 +191,13 @@
                   >
                 </figure>
                 <figure class="carousel-slide video-slide">
-                  <div class="youtube-placeholder" aria-label="Polar YouTube video placeholder">
-                    <span class="play-mark" aria-hidden="true"></span>
-                    <strong>Polar lift video</strong>
-                  </div>
+                  <iframe
+                    src="https://www.youtube-nocookie.com/embed/dBJOP-7S-vA?start=158&rel=0"
+                    title="Polar lift video"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                  ></iframe>
                 </figure>
               </div>
               <div class="carousel-controls" aria-label="Polar media controls">
@@ -326,7 +338,11 @@
 
         const restartRotation = () => {
           clearInterval(intervalId);
-          intervalId = window.setInterval(() => showSlide(activeIndex + 1), 3000);
+          if (slides[activeIndex].classList.contains("video-slide")) return;
+          intervalId = window.setInterval(() => {
+            showSlide(activeIndex + 1);
+            if (slides[activeIndex].classList.contains("video-slide")) clearInterval(intervalId);
+          }, 3000);
         };
 
         previousButton.addEventListener("click", () => {
