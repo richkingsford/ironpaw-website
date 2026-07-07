@@ -93,14 +93,8 @@
                     alt="Black and white concept sketch of Leia, a small autonomous brick robot with a tall mast lifting one brick."
                   >
                 </figure>
-                <figure class="carousel-slide video-slide">
-                  <iframe
-                    src="https://www.youtube-nocookie.com/embed/dBJOP-7S-vA?start=15&rel=0"
-                    title="Leia field video"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen
-                  ></iframe>
+                <figure class="carousel-slide">
+                  <img src="assets/leia.gif" alt="Animated field footage of Leia lifting and placing bricks." loading="lazy">
                 </figure>
               </div>
               <div class="carousel-controls" aria-label="Leia media controls">
@@ -122,14 +116,8 @@
                     alt="Black and white concept sketch of Cub, a small autonomous robot assembling a stud wall frame flat on the ground."
                   >
                 </figure>
-                <figure class="carousel-slide video-slide">
-                  <iframe
-                    src="https://www.youtube-nocookie.com/embed/dBJOP-7S-vA?start=72&rel=0"
-                    title="Cub assembly video"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen
-                  ></iframe>
+                <figure class="carousel-slide">
+                  <img src="assets/cub.gif" alt="Animated field footage of Cub assembling a stud wall frame." loading="lazy">
                 </figure>
               </div>
               <div class="carousel-controls" aria-label="Cub media controls">
@@ -151,14 +139,8 @@
                     alt="Black and white concept sketch of Grizzly, an autonomous telehandler."
                   >
                 </figure>
-                <figure class="carousel-slide video-slide">
-                  <iframe
-                    src="https://www.youtube-nocookie.com/embed/dBJOP-7S-vA?start=113&rel=0"
-                    title="Grizzly material run"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen
-                  ></iframe>
+                <figure class="carousel-slide">
+                  <img src="assets/grizzly.gif" alt="Animated field footage of Grizzly running materials across a jobsite." loading="lazy">
                 </figure>
               </div>
               <div class="carousel-controls" aria-label="Grizzly media controls">
@@ -180,14 +162,8 @@
                     alt="Wide black and white concept sketch of Polar, an autonomous crane lifting near a steel beam while a worker points."
                   >
                 </figure>
-                <figure class="carousel-slide video-slide">
-                  <iframe
-                    src="https://www.youtube-nocookie.com/embed/dBJOP-7S-vA?start=158&rel=0"
-                    title="Polar lift video"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen
-                  ></iframe>
+                <figure class="carousel-slide">
+                  <img src="assets/polar.gif" alt="Animated field footage of Polar performing an autonomous lift." loading="lazy">
                 </figure>
               </div>
               <div class="carousel-controls" aria-label="Polar media controls">
@@ -324,11 +300,7 @@
 
         const restartRotation = () => {
           clearInterval(intervalId);
-          if (slides[activeIndex].classList.contains("video-slide")) return;
-          intervalId = window.setInterval(() => {
-            showSlide(activeIndex + 1);
-            if (slides[activeIndex].classList.contains("video-slide")) clearInterval(intervalId);
-          }, 3000);
+          intervalId = window.setInterval(() => showSlide(activeIndex + 1), 3000);
         };
 
         previousButton.addEventListener("click", () => {
